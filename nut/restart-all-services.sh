@@ -10,12 +10,21 @@ echo "######################################################"
 tput sgr0
 echo
 #Restart all NUT Service
-
 service nut-server restart
 service nut-client restart
 systemctl restart nut-monitor
 upsdrvctl stop
 upsdrvctl start
+
+echo
+tput setaf 3
+echo "######################################################"
+echo "################### Restart Apache2 Service"
+echo "######################################################"
+tput sgr0
+echo
+#Restart Apache2 Service
+systemctl restart apache2
 
 echo
 tput setaf 3
