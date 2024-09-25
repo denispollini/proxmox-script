@@ -69,7 +69,7 @@ systemctl restart fail2ban
 echo
 tput setaf 3
 echo "######################################################"
-echo "################### Restart Service to Enable Config"
+echo "################### Script completed"
 echo "######################################################"
 tput sgr0
 echo
