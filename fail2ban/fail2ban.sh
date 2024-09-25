@@ -3,7 +3,7 @@ set -e
 
 #Update Repo and install Fail2Ban
 apt update
-apt install fail2ban
+apt install fail2ban -y
 
 #Setup Base Config
 cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
