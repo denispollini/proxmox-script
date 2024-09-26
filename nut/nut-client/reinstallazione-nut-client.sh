@@ -52,8 +52,8 @@ echo "######################################################"
 tput sgr0
 echo
 # Change group and permission for file notifycmd.sh
-sudo chown :nut /etc/nut/notifycmd.sh
-sudo chmod 774 /etc/nut/notifycmd.sh
+chown :nut /etc/nut/notifycmd.sh
+chmod 774 /etc/nut/notifycmd.sh
 
 echo
 tput setaf 3
