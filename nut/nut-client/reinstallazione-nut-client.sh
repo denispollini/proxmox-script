@@ -37,6 +37,16 @@ cp ./upsmon.conf /etc/nut/upsmon.conf
 echo
 tput setaf 3
 echo "######################################################"
+echo "################### Copy notifycmd.sh file"
+echo "######################################################"
+tput sgr0
+echo
+# Copy notifycmd.sh file
+cp ./notifycmd.sh /etc/nut/notifycmd.sh
+
+echo
+tput setaf 3
+echo "######################################################"
 echo "################### Path to the configuration file upsmon.conf"
 echo "######################################################"
 tput sgr0
