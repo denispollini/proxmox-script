@@ -108,6 +108,17 @@ cp ./notifycmd.sh /etc/nut/notifycmd.sh
 echo
 tput setaf 3
 echo "######################################################"
+echo "################### Change group and permission for file notifycmd.sh"
+echo "######################################################"
+tput sgr0
+echo
+# Change group and permission for file notifycmd.sh
+sudo chown :nut /etc/nut/notifycmd.sh
+sudo chmod 774 /etc/nut/notifycmd.sh
+
+echo
+tput setaf 3
+echo "######################################################"
 echo "################### Path to the configuration file upsmon.conf"
 echo "######################################################"
 tput sgr0
