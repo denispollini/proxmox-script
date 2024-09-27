@@ -5,10 +5,10 @@ set -e
 EMAIL_RECIPIENT=$(grep '^user:root@pam' /etc/pve/user.cfg | awk -F':' '{print $7}')
 
 # Define the message to send
-if [ "$1" = "online" ]; then
+if [ "$1" = "on line" ]; then
     SUBJECT="UPS Power Restored"
     BODY="The UPS is back on power."
-elif [ "$1" = "onbatt" ]; then
+elif [ "$1" = "on line power" ]; then
     SUBJECT="UPS on Battery"
     BODY="The UPS is running on battery."
 else
