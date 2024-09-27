@@ -12,9 +12,27 @@ echo
 backup_dir="/backup/proxmox"  # Backup destination folder
 timestamp=$(date +"%Y-%m-%d_%H-%M-%S")  # Current date and time for the file name
 backup_file="$backup_dir/proxmox_backup_$timestamp.tar.gz"  # Backup file name
-nextcloud_url="https://ip_adress_of_nextcloud_server/remote.php/dav/files/XXXXXXXXXXXXXXXXXXXXXX/folder/"  # WebDAV URL of the Nextcloud folder
-username="proxmox"  # Your Nextcloud username
-password="proxmox"  # Your Nextcloud password
+# Ask the user for the Nextcloud WebDAV URL
+read -p "Enter the Nextcloud WebDAV URL: " nextcloud_url
+
+# Ask the user for their username
+read -p "Enter your Nextcloud username: " username
+
+# Ask the user for the password
+read -s -p "Enter your Nextcloud password: " password
+echo  # To return after the password
+
+# Test access to Nextcloud via WebDAV
+echo "Checking your Nextcloud login credentials..."
+login_response=$(curl -s -o /dev/null -w "%{http_code}" -u "$username:$password" "$nextcloud_url")
+
+# Check if you logged in successfully
+if [ "$login_response" -eq 200 ]; then
+  echo "Successful login to Nextcloud!"
+else
+  echo "Nextcloud login error. HTTP response code: $login_response"
+  exit 1  # Stop the script on login error
+fi
 
 echo
 tput setaf 3
@@ -55,12 +73,30 @@ if [ $? -eq 0 ]; then
   # Check the upload status
   if [ "$curl_response" -eq 201 ]; then
     echo "Backup file upload completed successfully to Nextcloud: $nextcloud_url"
+    
+echo
+tput setaf 3
+echo "######################################################"
+echo "################### Delete the backup file after successful upload"
+echo "######################################################"
+tput sgr0
+echo
+    # Delete the backup file after successful upload
+    rm -f "$backup_file"
+    
+    if [ $? -eq 0 ]; then
+      echo "Backup file deleted successfully: $backup_file"
+    else
+      echo "Error deleting backup file: $backup_file"
+    fi
+
   else
     echo "Error uploading backup file to Nextcloud. HTTP response code: $curl_response"
   fi
 else
   echo "Error during backup"
 fi
+
 
 echo
 tput setaf 3
