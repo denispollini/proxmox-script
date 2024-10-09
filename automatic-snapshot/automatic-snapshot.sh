@@ -19,7 +19,7 @@ if [ -z "$EMAIL" ]; then
 fi
 
 # VM ID
-VMID="100"
+read -p "Please insert the VM ID you want to enable snapshot: " VMID
 
 # Snapshot name (may include timestamp for better identification)
 SNAPSHOT_NAME="snapshot-$(date +%Y-%m-%d_%H-%M-%S)"
