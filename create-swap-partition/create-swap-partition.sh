@@ -39,7 +39,7 @@ create_swap_partition() {
         echo        # First sector (default)
         echo        # Last sector (leave blank to use all available space)
         echo t      # Change the partition type
-        echo        # Select the newly created partition
+        echo        # Select the newly created partition (default)
         echo 82     # Type 82 = Linux swap
         echo w      # Write changes to disk
     ) | fdisk /dev/$disk
@@ -56,7 +56,7 @@ echo
 
 configure_swap() {
     # Find the most recently created partition (usually the latest)
-    partition="/dev/${disk}$(lsblk -nr -o NAME | grep "^${disk}" | tail -n 1)"
+    partition="/dev/$(lsblk -nr -o NAME /dev/$disk | tail -n 1)"
     
     if [ ! -b "$partition" ]; then
         echo "The partition $partition does not exist!"
