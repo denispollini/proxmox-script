@@ -20,11 +20,11 @@ execute_choice() {
     case $1 in
         1)
             echo "Running script to disable Enterprise repos and enable No-Subscription repos..."
-            ./script_disable_repos.sh # Replace with the actual script name
+            ./enable-repo-no-sub/enable-repo-no-sub.sh # Replace with the actual script name
             ;;
         2)
             echo "Running script to create a SWAP partition..."
-            ./script_create_swap.sh # Replace with the actual script name
+            ./create-swap-partition/create-swap-partition.sh # Replace with the actual script name
             ;;
         3)
             echo "Running script to backup configuration..."
