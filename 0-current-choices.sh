@@ -11,8 +11,8 @@ show_menu() {
     echo "6) NUT Server"
     echo "7) NUT Client"
     echo "8) Fail2Ban"
-    echo "8) Automatic VM Snapshot"
-    echo "8) Quit"
+    echo "9) Automatic VM Snapshot"
+    echo "10) Quit"
 }
 
 # Function to execute the command based on the user's choice
