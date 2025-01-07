@@ -21,7 +21,7 @@ echo "######################################################"
 tput sgr0
 echo
 #Restart all NUT Service
-systemclt disable nut-client
+systemctl disable nut-client
 systemctl disable nut-monitor
 
 echo
